@@ -30,9 +30,10 @@
                     <li class="nav-item">
                     <a class="nav-link" href="#">Features</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                    </li>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a class="btn btn-primary me-md-2" type="button" href="{{ route('login') }}">Login</a>
+                    </div>
+                    
                 </ul>
                 </div>
             </div>

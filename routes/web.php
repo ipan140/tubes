@@ -34,3 +34,11 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+});
+
+Route::get('/datatable', function () {
+    return view('dashboard.tables');
+});
