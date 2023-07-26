@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+// route untuk login
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [SesiController::class, 'index']);
     Route::get('/admin', [AdminController::class, 'index']);
@@ -27,18 +27,19 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/login', [LoginController::class, 'authenticate']);
 
+// route untuk welkompage
 Route::get('/', function () {
     return view('welcome');
 });
 
+// route untuk dashboard admin
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
+// dashboard data tabel
 Route::get('/datatable', function () {
     return view('dashboard.tables');
 });

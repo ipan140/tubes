@@ -21,16 +21,10 @@ class DummyUsersSeeder extends Seeder
                 'password'=> bcrypt('1234')
             ],
             [
-                'name' => 'mas customer',
-                'email' => 'customer@gmail.com',
-                'role' => 'customer',
-                'password'=> bcrypt('1234')
-            ],
-            [
-                'name' => 'customer2',
-                'email' => 'customer2@gmail.com',
-                'role' => 'customer',
-                'password'=> bcrypt('1234')
+                'name' => 'mas user',
+                'email' => 'userr@gmail.com',
+                'role' => 'user',
+                'password'=> bcrypt('2345')
             ],
         ];
 
