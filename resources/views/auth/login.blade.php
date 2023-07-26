@@ -9,33 +9,53 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="container py-5">
-        <div class="w-50 center border rounded px-3 py-3 mx-auto">
-        <h1>Login</h1>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $item)
-                    <li>{{$item}} </li>
-                    @endforeach
-                </ul>
+<section class="vh-100" style="background-color: #508bfc;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-3 text-center">
+            <i class="bi-hexagon-fill text-primary me-2 fs-1"></i>
+                <h4>Employee Data Master Login</h4>
+              </div>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <hr class="my-4">
+            <div class="form-outline mb-4">
+            <label class="form-label" for="email">{{ __('Email Address') }}</label>
+              <input type="email" id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Masukan Email anda" />
+              @error('email')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
             </div>
-        @endif
-        <form action="" method="POST">
-            @csrf
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" value="{{old('email')}}" name="email" class="form-control">
+
+            <div class="form-outline mb-4">
+            <label class="form-label" for="password">{{ __('Password') }}</label>
+              <input type="password" id="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Masukan Password" />
+              @error('password')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control">
+
+            <!-- Checkbox -->
+            <div class="form-check d-flex justify-content-start mb-4">
+              <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+              <label class="form-check-label" for="form1Example3"> Remember password </label>
             </div>
-            <div class="mb-3 d-grid">
-                <button name="submit" type="submit" class="btn btn-primary">Login</button>
-            </div>
-        </form>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit"> {{ __('Login') }}</button><br><br>
+            <p><a href="register" class="link-underline-primary">Register akun ?</a></p>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
+  </div>
+</section>
 </body>
 </html>
