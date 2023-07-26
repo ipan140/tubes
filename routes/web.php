@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SesiController;
+use App\Http\Controllers\HalProdukController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,3 +44,5 @@ Route::get('/dashboard', function () {
 Route::get('/datatable', function () {
     return view('dashboard.tables');
 });
+
+Route::get('/HalamanProduk', [App\Http\Controllers\HalProdukController::class, 'index'])->name('HalamanProduk');
