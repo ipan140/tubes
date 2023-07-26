@@ -33,7 +33,7 @@
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a class="btn btn-primary me-md-2" type="button" href="{{ route('login') }}">Login</a>
                     </div>
-                    
+
                 </ul>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ route('HalamanProduk') }}">Beli</a></div>
                             </div>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ route('HalamanProduk') }}">Beli</a></div>
                             </div>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ route('HalamanProduk') }}">Beli</a></div>
                             </div>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ route('HalamanProduk') }}">Beli</a></div>
                             </div>
                         </div>
                     </div>
@@ -180,7 +180,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ route('HalamanProduk') }}">Beli</a></div>
                             </div>
                         </div>
                     </div>
@@ -210,7 +210,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ route('HalamanProduk') }}">Beli</a></div>
                             </div>
                         </div>
                     </div>
