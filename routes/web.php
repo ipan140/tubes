@@ -21,8 +21,11 @@ use App\Http\Controllers\LogoutController;
 */
 
 
-Route::get('profile', ProfileController::class)->name('profile');
+Auth::routes();
 
+Route::get('profile', ProfileController::class)->name('profile');
+Route::get('/HalamanProduk', [App\Http\Controllers\HalProdukController::class, 'index'])->name('HalamanProduk');
+Route::get('/HalamanAwal', [App\Http\Controllers\HalAwalController::class, 'index'])->name('HalamanAwal');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // route untuk halaman awal
@@ -39,10 +42,5 @@ Route::get('/dashboard', function () {
 Route::get('/datatable', function () {
     return view('dashboard.tables');
 });
-
-Route::get('/HalamanProduk', [App\Http\Controllers\HalProdukController::class, 'index'])->name('HalamanProduk');
-Route::get('/HalamanAwal', [App\Http\Controllers\HalAwalController::class, 'index'])->name('HalamanAwal');
-
-Auth::routes();
 
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
