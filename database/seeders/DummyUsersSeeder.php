@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -13,23 +14,14 @@ class DummyUsersSeeder extends Seeder
      */
     public function run(): void
     {
-        $userData = [
+        DB::table('users')->insert([
             [
                 'name' => 'mas admin',
                 'email' => 'admin@admin.com',
                 'role' => 'admin',
-                'password'=> bcrypt('1234')
-            ],
-            [
-                'name' => 'mas user',
-                'email' => 'userr@gmail.com',
-                'role' => 'user',
-                'password'=> bcrypt('2345')
-            ],
-        ];
-
-        foreach($userData as $key => $val){
-            User::create($val);
-        }
+                'password'=> bcrypt('1234567')
+            ]
+        ]);
     }
+
 }
