@@ -72,6 +72,16 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        <input type="hidden" value="User" name="Role">
+                        {{-- <div class="row mb-3">
+                            <label for="Role" class="col-md-4 col-form-label text-md-end">Pilihan Role:</label>
+                            <div class="col-md-6">
+                                <select name="Role" id="Role">
+                                    <option value="">Pilih salah satu</option> <!-- Opsi opsional dengan value kosong -->
+                                    <option value="User">Customer</option>
+                                </select>
+                            </div>
+                        </div> --}}
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">

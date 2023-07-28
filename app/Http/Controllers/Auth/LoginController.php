@@ -56,4 +56,10 @@ class LoginController extends Controller
         'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
     }
+    // Fungsi untuk logout
+    public function logout(Request $request)
+    {
+        Auth::logout(); // Melakukan proses logout
+        return redirect('/login'); // Mengarahkan pengguna kembali ke halaman login
+    }
 }

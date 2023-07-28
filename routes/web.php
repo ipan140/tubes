@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\SesiController;
 use App\Http\Controllers\HalProdukController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LogoutController;
 
 
 
@@ -20,17 +20,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// route untuk login
-Route::middleware(['guest'])->group(function () {
-    Route::get('/', [SesiController::class, 'index']);
-    Route::get('/admin', [AdminController::class, 'index']);
-    Route::post('/', [SesiController::class, 'login']);
-});
 
-Auth::routes();
+Route::get('profile', ProfileController::class)->name('profile');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// route untuk welkompage
+// route untuk halaman awal
 Route::get('/', function () {
     return view('welcome');
 });
@@ -46,3 +41,8 @@ Route::get('/datatable', function () {
 });
 
 Route::get('/HalamanProduk', [App\Http\Controllers\HalProdukController::class, 'index'])->name('HalamanProduk');
+Route::get('/HalamanAwal', [App\Http\Controllers\HalAwalController::class, 'index'])->name('HalamanAwal');
+
+Auth::routes();
+
+Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
