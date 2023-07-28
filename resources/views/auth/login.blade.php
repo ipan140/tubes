@@ -18,7 +18,7 @@
 
             <div class="mb-3 text-center">
             <i class="bi-hexagon-fill text-primary me-2 fs-1"></i>
-                <h4>Employee Data Master Login</h4>
+                <h4>Zsnack</h4>
               </div>
             <form method="POST" action="{{ route('login') }}">
                 @csrf

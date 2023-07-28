@@ -17,8 +17,8 @@ class HomeController extends Controller
         $role = $data->role;
         if ($role=="admin"){
             return view('dashboard.index',['data'=>$data]);
-        }elseif ($role=="user"){
-            return view('welcome',['data'=>$data]);
+        }elseif ($role=="User"){
+            return view('HalamanAwal',['data'=>$data]);
         }
     }
 }
