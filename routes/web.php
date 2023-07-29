@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HalProdukController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PembelianController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
@@ -27,6 +28,7 @@ Route::get('profile', ProfileController::class)->name('profile');
 Route::get('/HalamanProduk', [App\Http\Controllers\HalProdukController::class, 'index'])->name('HalamanProduk');
 Route::get('/HalamanAwal', [App\Http\Controllers\HalAwalController::class, 'index'])->name('HalamanAwal');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/pembelian', [App\Http\Controllers\PembelianController::class, 'index'])->name('pembelian');
 
 // route untuk halaman awal
 Route::get('/', function () {
