@@ -10,8 +10,8 @@ class HalProdukController extends Controller
     function index()
     {
     $pageTitle = 'HalamanProduk';
-    $products = Product::all();
-    return view('HalamanProduk', ['pageTitle' => $pageTitle,'products' => $products]);
+    $produk = Product::all();
+    return view('HalamanProduk', ['pageTitle' => $pageTitle,'products' => $produk]);
     }
 
     public function addToCart(Request $request, $id)
@@ -27,7 +27,7 @@ class HalProdukController extends Controller
             'qty' => 1,
             'price' => $product->product_price,
             'options' => [
-                'artist' => $product->product_artist,
+            'artist' => $product->product_artist,
                 // Add more options as needed
             ]
         ]);

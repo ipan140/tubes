@@ -24,9 +24,10 @@ use App\Http\Controllers\LogoutController;
 Auth::routes();
 
 Route::get('profile', ProfileController::class)->name('profile');
-Route::get('/HalamanProduk', [App\Http\Controllers\HalProdukController::class, 'index'])->name('HalamanProduk');
+// Route::get('/HalamanProduk', [App\Http\Controllers\HalProdukController::class, 'index'])->name('HalamanProduk');
 Route::get('/HalamanAwal', [App\Http\Controllers\HalAwalController::class, 'index'])->name('HalamanAwal');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/HalamanProduk/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('HalamanProduk');
 
 // route untuk halaman awal
 Route::get('/', function () {
