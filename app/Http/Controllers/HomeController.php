@@ -6,6 +6,8 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Input\Input;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class HomeController extends Controller
 {
@@ -28,6 +30,24 @@ class HomeController extends Controller
     {
         $produk = Product::findOrfail($id);
         $pageTitle = 'HalamanProduk';
-        return view('HalamanProduk', ['pageTitle' => $pageTitle,'produk' => $produk]);
+        $identifier = Auth::user()->name;
+        $cartContent = Cart::instance($identifier)->content();
+        return view('HalamanProduk', ['pageTitle' => $pageTitle,'produk' => $produk, 'cartContent' => $cartContent,]);
+        
+    }
+    function add(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        $quantity = $request->input('quantity', 1);
+        $identifier = Auth::user()->name;
+
+        Cart::instance($identifier)->add([
+            'id' => $product->id,
+            'name' => $product->product_name,
+            'price' => $product->product_price,
+            'qty' => $quantity,
+        ]);
+
+        return redirect()->back()->with('success', 'Item added to cart successfully.');
     }
 }
