@@ -34,6 +34,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">About</a>
                         </li>
+                        <form class="d-flex">
+                            <button class="btn btn-outline-dark" type="submit">
+                                <i class="bi-cart-fill me-1"></i>
+                                Cart
+                                <span class="badge bg-dark text-white ms-1 rounded-pill">{{ Cart::instance(auth()->user()->name)->count() }}</span>
+                            </button>
+                        </form>
                         <a id="navbarDropdown" class="nav-link active dropdown-toggle"href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         <i class="bi bi-file-person-fill"></i> {{ Auth::user()->name }}
                         </a>

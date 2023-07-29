@@ -9,6 +9,7 @@ use App\Http\Controllers\LogoutController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,9 @@ Route::get('profile', ProfileController::class)->name('profile');
 Route::get('/HalamanAwal', [App\Http\Controllers\HalAwalController::class, 'index'])->name('HalamanAwal');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/HalamanProduk/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('HalamanProduk');
+// Route::get('/cart/add/{id}', [App\Http\Controllers\HomeController::class, 'add'])->name('cart.add');
+Route::post('/cart/add/{id}', [App\Http\Controllers\HomeController::class, 'add'])->name('cart.add');
+
 
 // route untuk halaman awal
 Route::get('/', function () {
@@ -42,6 +46,10 @@ Route::get('/dashboard', function () {
 // dashboard data tabel
 Route::get('/datatable', function () {
     return view('dashboard.tables');
+});
+
+Route::get('/pembayaran', function () {
+    return view('pembayaran');
 });
 
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
