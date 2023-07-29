@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,15 @@ class HomeController extends Controller
         if ($role=="admin"){
             return view('dashboard.index',['data'=>$data]);
         }elseif ($role=="User"){
-            return view('HalamanAwal',['data'=>$data]);
+            $produk = Product::all();
+            return view('HalamanAwal',['data'=>$data, 'produk'=>$produk]);
         }
+    }
+
+    function show ($id)
+    {
+        $produk = Product::findOrfail($id);
+        $pageTitle = 'HalamanProduk';
+        return view('HalamanProduk', ['pageTitle' => $pageTitle,'produk' => $produk]);
     }
 }
