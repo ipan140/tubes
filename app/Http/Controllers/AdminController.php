@@ -50,7 +50,7 @@ class AdminController extends Controller
             $barang->encrypted_filename = $encryptedFilename;
         }
     
-        $employee->save();
+        $barang->save();
         $pageTitle = 'Create barang';
         return view('dashboard.index', compact('pageTitle'));
     }
@@ -129,8 +129,6 @@ class AdminController extends Controller
         // return redirect()->route('employees.index');
     }
 
-
-
     /**
      * Remove the specified resource from storage.
      */
@@ -149,76 +147,4 @@ class AdminController extends Controller
         // // Alert::success('Deleted Successfully', 'Employee Data Deleted Successfully.');
         // return redirect()->route('employees.index');
     }
-
-
-    public function downloadFile($employeeId)
-    {
-        $employee = Resi::find($employeeId);
-        $encryptedFilename = 'public/files/' . $employee->encrypted_filename;
-        $downloadFilename = Str::lower($employee->firstname . '_' . $employee->lastname . '_cv.pdf');
-
-        if (Storage::exists($encryptedFilename)) {
-            return Storage::download($encryptedFilename, $downloadFilename);
-        }
-    }
-
-
-    public function deleteFile(Request $request, Resi $employee)
-    {
-        // Periksa apakah file ada sebelum menghapusnya
-        if ($employee->original_filename) {
-            // Hapus file dari storage
-            Storage::disk('public')->delete('public/files/' . $employee->encrypted_filename);
-            // Hapus informasi file dari model Employee
-            $employee->original_filename = null;
-            $employee->encrypted_filename = null;
-            $employee->save();
-
-            return redirect()->back()->with('success', 'File deleted successfully.');
-        }
-
-        return redirect()->back()->with('error', 'File not found.');
-    }
-
-    public function fullimage()
-    {
-        $pageTitle = 'Resi List';
-        // confirmDelete();
-        $resis = Resi::all();
-        // $totalHargaSum = inreports::sum('total_harga');
-
-        return view('admin.resi.index', [
-            'pageTitle' => $pageTitle,
-            'resis' => $resis
-        ]);
-    }
-
-    public function exportExcel()
-    {
-        // return Excel::download(new EmployeesExport, 'employees.xlsx');
-    }
-
-    
-
-    // public function getData(Request $request)
-    // {
-    //     $employees = Employee::with('position');
-
-    //     if ($request->ajax()) {
-    //         return datatables()->of($employees)
-    //             ->addIndexColumn()
-    //             ->addColumn('actions', function ($employee) {
-    //                 return view('employee.actions', compact('employee'));
-    //             })
-    //             ->toJson();
-    //     }
-    // }
-    // public function exportPdf()
-    // {
-    //     $employees = Employee::all();
-
-    //     // $pdf = PDF::loadView('employee.export_pdf', compact('employees'));
-
-    //     return $pdf->download('employees.pdf');
-    // }
 }
