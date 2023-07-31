@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HalProdukController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PembayaranController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
@@ -25,9 +26,10 @@ Auth::routes();
 
 Route::get('profile', ProfileController::class)->name('profile');
 // Route::get('/HalamanProduk', [App\Http\Controllers\HalProdukController::class, 'index'])->name('HalamanProduk');
-Route::get('/HalamanAwal', [App\Http\Controllers\HalAwalController::class, 'index'])->name('HalamanAwal');
+// Route::get('/HalamanAwal', [App\Http\Controllers\HalAwalController::class, 'index'])->name('HalamanAwal');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/HalamanProduk/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('HalamanProduk');
+Route::get('/pembayaran', [App\Http\Controllers\PembayaranController::class, 'index'])->name('pembayaran');
 
 // route untuk halaman awal
 Route::get('/', function () {
