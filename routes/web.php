@@ -1,14 +1,12 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\HalProdukController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KasirController;
+use App\Http\Controllers\DatabarangController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
-
-
-
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +24,7 @@ Auth::routes();
 
 Route::get('profile', ProfileController::class)->name('profile');
 // Route::get('/HalamanProduk', [App\Http\Controllers\HalProdukController::class, 'index'])->name('HalamanProduk');
-Route::get('/HalamanAwal', [App\Http\Controllers\HalAwalController::class, 'index'])->name('HalamanAwal');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/HalamanAwal', [App\Http\Controllers\HalAwalController::class, 'index'])->name('HalamanAwal');
 Route::get('/HalamanProduk/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('HalamanProduk');
 // Route::get('/cart/add/{id}', [App\Http\Controllers\HomeController::class, 'add'])->name('cart.add');
 Route::post('/cart/add/{id}', [App\Http\Controllers\HomeController::class, 'add'])->name('cart.add');
@@ -39,17 +36,31 @@ Route::get('/', function () {
 });
 
 // route untuk dashboard admin
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
+// Route::get('/dashboard', function () {
+//     return view('dashboard.index');
+// });
+
+// Route::get('/pembayaran', function () {
+//     return view('pembayaran');
+// });
+
+// Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+// Route::resource('Databarang', DatabarangController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Rest of your code...
+
+Route::middleware(['auth', 'User'])->group(function () {
+    // Route::get('/dashboarduser', [KasirController::class, 'index'])->name('homekasir');
+    Route::get('profile', ProfileController::class)->name('profile');
+    // Route::get('/HalamanProduk', [App\Http\Controllers\HalProdukController::class, 'index'])->name('HalamanProduk');
+    // Rest of your routes...
 });
 
-// dashboard data tabel
-Route::get('/datatable', function () {
-    return view('dashboard.tables');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboardadmin', [DatabarangController::class, 'index'])->name('dashboardadmin');
+    Route::resource('Databarang', DatabarangController::class);
+    // Route::resource('admin', AdminController::class);
+    // Rest of your routes...
 });
-
-Route::get('/pembayaran', function () {
-    return view('pembayaran');
-});
-
-Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');

@@ -67,43 +67,29 @@
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                     <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            <a href="{{ route('Databarang.create') }}" class="btn btn-primary">Create Employee</a>
-                        </div>
                         <div class="card-body">
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>
-                                        <th>Nama</th>
-                                        <th>Harga</th>
-                                        <th>Gambar</th>
-                                        <th>aksi</th>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($produk as $products)
                                     <tr>
+                                        <td>{{ $products->id }}</td>
                                         <td>{{ $products->product_name }}</td>
                                         <td>{{ $products->product_price }}</td>
                                         <td><a href="#" data-bs-toggle="modal" data-bs-target="#fullImageModal{{ $products->id }}">
-                                            <img src="{{ asset('storage/files/' . $products->encrypted_filename) }}" alt="FotoResi" style="max-width: 100px;">
-                                        </a></td>
-                                        <td>
-                                        <div class="d-flex">
-                                        <a href="" class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-box-seam-fill"></i></i></a>
-                                        <a href="" class="btn btn-outline-dark btn-sm me-2"><i class="bi-pencil-square"></i></a>
-                                        <div>
-                                        <form action="" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-outline-dark btn-sm me-2"></button>
-                                        </form>
-                                        </div>
+                                                <img src="{{ asset('storage/files/' . $products->encrypted_filename) }}" alt="FotoResi" style="max-width: 100px;">
+                                            </a>
                                         </td>
                                     </tr>
                                     @endforeach
-                                </tbody>              
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -116,4 +102,5 @@
     <script src="js/datatables-simple-demo.js"></script>
     @vite('resources/js/app.js')
 </body>
+
 </html>
