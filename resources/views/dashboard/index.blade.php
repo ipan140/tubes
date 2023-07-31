@@ -85,7 +85,9 @@
                                             <td>{{ $products->id }}</td>
                                             <td>{{ $products->product_name }}</td>
                                             <td>{{ $products->product_price }}</td>
-                                            <td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#fullImageModal{{ $products->id }}">
+                                                <img src="{{ asset('storage/files/' . $products->encrypted_filename) }}" alt="FotoResi" style="max-width: 100px;">
+                                            </a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

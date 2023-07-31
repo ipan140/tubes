@@ -13,15 +13,31 @@ class DatabarangController extends Controller
      */
     public function index()
     {
+        $pageTitle = 'Resi List';
+        // Check if the $produk variable is empty
+        if (!isset($produk)) {
+            $produk = Product::all();
+        }
 
+        return view('dashboard.index', [
+            'pageTitle' => $pageTitle,
+            'produk' => $produk
+        ]);
     }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $pageTitle = 'Create barang';
-        return view('databarang.create', compact('pageTitle'));
+        $pageTitle = 'Resi List';
+        // confirmDelete();
+        $produk = Product::all();
+
+        return view('dashboard.create', [
+            'pageTitle' => $pageTitle,
+            'produk' => $produk
+        ]);
     }
 
     /**
@@ -29,35 +45,51 @@ class DatabarangController extends Controller
      */
     public function store(Request $request)
     {
-        // var_dump($request->product_photo_filename);die();
         $messages = [
             'required' => ':Attribute harus diisi.',
-            // 'numeric' => 'Isi :attribute dengan angka'
-            // 'image' => 'Isi : attribute dengan jpg, jpeg, png, bmp, gif, svg, atau webp saja'
+            'email' => 'Isi :attribute dengan format yang benar',
+            'numeric' => 'Isi :attribute dengan angka'
         ];
 
         $validator = Validator::make($request->all(), [
-            'product_name' => 'required',
-            'product_photo_filename' => 'required',
-            'product_price' => 'required',
-
+            // 'firstName' => 'required',
+            // 'lastName' => 'required',
+            // 'email' => 'required|email',
+            // 'age' => 'required|numeric',
         ], $messages);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // $image = $request->file('product_photo_filename');
-        // $imageName = $image->hashName();
-        // $image->move(resource_path('images'), $imageName);
-        // $tambah = new Product();
-        // $tambah->product_name = $request->product_name;
-        // $tambah->product_price = $request->product_price;
-        // $tambah->product_photo_filename = $imageName;
-        // $tambah->save();
-        // return redirect()->route('home');
+        // Get File
 
+        $file = $request->file('fotoproduk');
+
+        if ($file != null) {
+            $originalFilename = $file->getClientOriginalName();
+            $encryptedFilename = $file->hashName();
+
+            // Store File
+            $file->store('public/files');
+        }
+
+        // ELOQUENT
+        $employee = new Product;
+        $employee->product_name = $request->product_name;
+        $employee->product_price = $request->product_price;
+
+        if ($file != null) {
+            $employee->original_filename = $originalFilename;
+            $employee->encrypted_filename = $encryptedFilename;
+        }
+
+        $employee->save();
+
+
+        return redirect()->route('dashboardadmin')->with('success', 'Data successfully created.');
     }
+
 
     /**
      * Display the specified resource.
@@ -89,6 +121,6 @@ class DatabarangController extends Controller
     public function destroy(string $id)
     {
         Product::find($id)->delete();
-        return redirect()->route('dashboard.index')->with('success','Produk berhasil dihapus');
+        return redirect()->route('dashboard.index')->with('success', 'Produk berhasil dihapus');
     }
 }

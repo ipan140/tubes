@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -39,27 +38,22 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    public function authenticate(Request $request)
+    public function login(Request $request)
     {
-        $credentials = $request->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required'],
-        'role' => ['required'],
-    ]);
+        $credentials = $request->only('email', 'password');
 
-    if (Auth::attempt($credentials)) {
-        $request->session()->regenerate();
-    return redirect()->intended('home');
-    }
-    return back()->withErrors([
-        'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
-    }
-    // Fungsi untuk logout
-    public function logout(Request $request)
-    {
-        Auth::logout(); // Melakukan proses logout
-        return redirect('/login'); // Mengarahkan pengguna kembali ke halaman login
+        if (auth()->attempt($credentials)) {
+            // Jika autentikasi berhasil
+            if (auth()->user()->role == 'admin') {
+                return redirect()->route('dashboardadmin'); // Ganti dengan rute yang sesuai untuk halaman admin
+            } elseif (auth()->user()->role_id == '2') {
+                return redirect()->route('homekasir'); // Ganti dengan rute yang sesuai untuk halaman kasir
+            }
+        }
+
+        // Jika autentikasi gagal
+        return redirect()->route('login')->withErrors([
+            'email' => 'These credentials do not match our records.',
+        ]);
     }
 }

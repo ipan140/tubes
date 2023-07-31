@@ -13,7 +13,9 @@ class HomeController extends Controller
 {
     function index ()
     {
+        $produk = Product::all();
         $id = Auth::user()->id;
+        
         $data = DB::table('users')
                 ->where('id','=', $id)
                 ->first();
@@ -25,6 +27,7 @@ class HomeController extends Controller
             $produk = Product::all();
             return view('HalamanAwal',['data'=>$data, 'produk'=>$produk]);
         }
+        return view('dashboard.index',['produk'=> $produk]);
     }
 
     function show ($id)
