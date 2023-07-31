@@ -19,7 +19,8 @@ class HomeController extends Controller
                 ->first();
         $role = $data->role;
         if ($role=="admin"){
-            return view('dashboard.index',['data'=>$data]);
+            $produk = Product::all();
+            return view('dashboard.index',['data'=>$data, 'produk'=>$produk]);
         }elseif ($role=="User"){
             $produk = Product::all();
             return view('HalamanAwal',['data'=>$data, 'produk'=>$produk]);
@@ -50,4 +51,5 @@ class HomeController extends Controller
 
         return redirect()->back()->with('success', 'Item added to cart successfully.');
     }
+    
 }

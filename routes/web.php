@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DatabarangController;
 use App\Http\Controllers\HalProdukController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,13 +45,9 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
-// dashboard data tabel
-Route::get('/datatable', function () {
-    return view('dashboard.tables');
-});
-
 Route::get('/pembayaran', function () {
     return view('pembayaran');
 });
 
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+Route::resource('Databarang', DatabarangController::class);
