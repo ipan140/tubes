@@ -130,8 +130,6 @@
     <script src="js/datatables-simple-demo.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-
 </body>
 @vite('resources/js/app.js')
-
 </html>
