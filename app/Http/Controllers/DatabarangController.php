@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class DatabarangController extends Controller
@@ -75,18 +76,16 @@ class DatabarangController extends Controller
         }
 
         // ELOQUENT
-        $employee = new Product;
-        $employee->product_name = $request->product_name;
-        $employee->product_price = $request->product_price;
+        $barang = new Product;
+        $barang->product_name = $request->product_name;
+        $barang->product_price = $request->product_price;
 
         if ($file != null) {
-            $employee->original_filename = $originalFilename;
-            $employee->encrypted_filename = $encryptedFilename;
+            $barang->original_filename = $originalFilename;
+            $barang->encrypted_filename = $encryptedFilename;
         }
 
-        $employee->save();
-
-
+        $barang->save();
         return redirect()->route('dashboardadmin')->with('success', 'Data successfully created.');
     }
 
@@ -121,6 +120,6 @@ class DatabarangController extends Controller
     public function destroy(string $id)
     {
         Product::find($id)->delete();
-        return redirect()->route('dashboard.index')->with('success', 'Produk berhasil dihapus');
+        return redirect()->route('home');
     }
 }

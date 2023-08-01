@@ -8,6 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Dashboard - SB Admin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -51,10 +52,6 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Login
                         </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
                     </div>
                 </div>
             </nav>
@@ -92,12 +89,13 @@
                                         <td>
                                         <div class="d-flex">
                                         <a href="" class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-box-seam-fill"></i></i></a>
-                                        <a href="" class="btn btn-outline-dark btn-sm me-2"><i class="bi-pencil-square"></i></a>
+                                        <a href="" class="btn btn-outline-warning btn-sm me-2"><i class="bi-pencil-square"></i></a>
                                         <div>
-                                        <form action="" method="POST">
+                                        <form action="{{ route('dashboard.destroy', ['id' => $products->id]) }}" method="POST">
+
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-outline-dark btn-sm me-2"></button>
+                                            <button type="submit" class="btn btn-outline-danger btn-sm me-2"><i class="bi bi-trash3-fill"></i></button>
                                         </form>
                                         </div>
                                         </td>
