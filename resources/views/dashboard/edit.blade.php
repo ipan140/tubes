@@ -24,14 +24,14 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="product_name" class="form-label">Nama Produk</label>
-                            <input class="form-control @error('product_name') is-invalid @enderror" type="text" name="product_name" id="product_name" value="{{ old('product_name') }}" placeholder="Produk">
+                            <input class="form-control @error('product_name') is-invalid @enderror" type="text" name="product_name" id="product_name" value="{{ $errors->any() ? old('product_name') : $barang->product_name }}" placeholder="Produk">
                             @error('product_name')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="product_price" class="form-label">Harga</label>
-                            <input class="form-control @error('product_price') is-invalid @enderror" type="text" name="product_price" id="product_price" value="{{ old('product_price') }}" placeholder="Harga produk">
+                            <input class="form-control @error('product_price') is-invalid @enderror" type="text" name="product_price" id="product_price" value="{{ $errors->any() ? old('product_price') : $barang->product_price }}" placeholder="Harga produk">
                             @error('product_price')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col">
                             <label for="product_deskripsi" class="form-label">Deskripsi</label>
-                            <input class="form-control @error('product_deskripsi') is-invalid @enderror" type="text" name="product_deskripsi" id="product_deskripsi" value="{{ old('product_deskripsi') }}" placeholder="Produk">
+                            <input class="form-control @error('product_deskripsi') is-invalid @enderror" type="text" name="product_deskripsi" id="product_deskripsi" value="{{ $errors->any() ? old('product_deskripsi') : $barang->product_deskripsi }}" placeholder="Produk">
                             @error('product_deskripsi')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
