@@ -61,6 +61,8 @@ Route::middleware(['auth', 'User'])->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboardadmin', [DatabarangController::class, 'index'])->name('dashboardadmin');
     Route::resource('Databarang', DatabarangController::class);
+    // Route::put('/Databarang/{id}', [DatabarangController::class, 'update'])->name('Databarang.update');
+    // Route::get('/Databarang/{id}/edit', [DatabarangController::class, 'edit'])->name('Databarang.edit');
     Route::delete('/Databarang/{id}', 'DatabarangController@destroy')->name('dashboard.destroy');
     // Route::resource('admin', AdminController::class);
     // Rest of your routes...

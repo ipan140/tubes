@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class DatabarangController extends Controller
@@ -15,11 +16,7 @@ class DatabarangController extends Controller
     public function index()
     {
         $pageTitle = 'Resi List';
-        // Check if the $produk variable is empty
-        if (!isset($produk)) {
-            $produk = Product::all();
-        }
-
+        $produk = Product::all();
         return view('dashboard.index', [
             'pageTitle' => $pageTitle,
             'produk' => $produk
@@ -31,7 +28,7 @@ class DatabarangController extends Controller
      */
     public function create()
     {
-        $pageTitle = 'Resi List';
+        $pageTitle = 'Dashboard';
         // confirmDelete();
         $produk = Product::all();
 
@@ -53,10 +50,6 @@ class DatabarangController extends Controller
         ];
 
         $validator = Validator::make($request->all(), [
-            // 'firstName' => 'required',
-            // 'lastName' => 'required',
-            // 'email' => 'required|email',
-            // 'age' => 'required|numeric',
         ], $messages);
 
         if ($validator->fails()) {
@@ -79,6 +72,7 @@ class DatabarangController extends Controller
         $barang = new Product;
         $barang->product_name = $request->product_name;
         $barang->product_price = $request->product_price;
+        $barang->product_deskripsi = $request->product_deskripsi;
 
         if ($file != null) {
             $barang->original_filename = $originalFilename;
@@ -95,7 +89,8 @@ class DatabarangController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // $product = Product::find($id);
+        // return view('show', compact('product'));
     }
 
     /**
@@ -103,7 +98,14 @@ class DatabarangController extends Controller
      */
     public function edit(string $id)
     {
-        //
+         $pageTitle = 'Edit Employee';
+
+        // ELOQUENT
+        $product = Product::all();
+        $barang = Product::find($id);
+
+        return view('dashboard.edit', compact('pageTitle', 'product', 'barang'));
+
     }
 
     /**
@@ -111,7 +113,38 @@ class DatabarangController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        {
+    
+            $file = $request->file('fotoproduk');
+    
+            if ($file != null) {
+                $barang = Product::find($id);
+                $encryptedFilename = 'public/files/' . $barang->encrypted_filename;
+                Storage::delete($encryptedFilename);
+            }
+            if ($file != null) {
+                $originalFilename = $file->getClientOriginalName();
+                $encryptedFilename = $file->hashName();
+    
+                // Store File
+                $file->Store('public/files');
+            }
+    
+            // UPDATE QUERY (ELOQUENT)
+            $barang = Product::find($id);
+            $barang->product_name = $request->product_name;
+            $barang->product_price = $request->product_price;
+            $barang->product_deskripsi = $request->product_deskripsi;
+    
+            if ($file != null) {
+                $barang->original_filename = $originalFilename;
+                $barang->encrypted_filename = $encryptedFilename;
+            }
+    
+            $barang->save();
+            return redirect()->route('Databarang.index');
+        }
+    
     }
 
     /**

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('original_filename')->after('product_name')->nullable();
-            $table->string('encrypted_filename')->after('original_filename')->nullable();
+            // $table->string('original_filename')->after('product_name')->nullable();
+            $table->string('product_deskripsi')->after('original_filename')->nullable();
         });
     }
     
@@ -23,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('encrypted_filename');
+            $table->dropColumn('product_deskripsi');
             $table->dropColumn('original_filename');
         });
     }
