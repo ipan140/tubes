@@ -84,7 +84,13 @@
                                 Add to cart
                             </button>
                         </div>
-                        </form>
+                        <hr>
+                        <div class="d-flex">
+                            <button class="btn btn-outline-dark flex-shrink-0" type="button" href="#" >
+                                Beli
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>

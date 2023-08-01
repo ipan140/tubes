@@ -9,6 +9,4 @@
             <h4 class="mb-0">Well done! this is {{ $pageTitle }}.jjjjjkkkkm</h4>
         </div>
 </div>
-    </div>
-</li>
 @endsection

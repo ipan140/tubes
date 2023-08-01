@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\KasirController;
-use App\Http\Controllers\DatabarangController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HalProdukController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PembelianController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +24,10 @@ use App\Http\Controllers\ProfileController;
 Auth::routes();
 
 Route::get('profile', ProfileController::class)->name('profile');
-// Route::get('/HalamanProduk', [App\Http\Controllers\HalProdukController::class, 'index'])->name('HalamanProduk');
-// Route::get('/HalamanAwal', [App\Http\Controllers\HalAwalController::class, 'index'])->name('HalamanAwal');
-Route::get('/HalamanProduk/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('HalamanProduk');
-// Route::get('/cart/add/{id}', [App\Http\Controllers\HomeController::class, 'add'])->name('cart.add');
-Route::post('/cart/add/{id}', [App\Http\Controllers\HomeController::class, 'add'])->name('cart.add');
-
+Route::get('/HalamanProduk', [App\Http\Controllers\HalProdukController::class, 'index'])->name('HalamanProduk');
+Route::get('/HalamanAwal', [App\Http\Controllers\HalAwalController::class, 'index'])->name('HalamanAwal');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/pembelian', [App\Http\Controllers\PembelianController::class, 'index'])->name('pembelian');
 
 // route untuk halaman awal
 Route::get('/', function () {
