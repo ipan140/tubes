@@ -74,6 +74,7 @@
                                     <tr>
                                         <th>Nama</th>
                                         <th>Harga</th>
+                                        <th>Deskripsi</th>
                                         <th>Gambar</th>
                                         <th>aksi</th>
                                     </tr>
@@ -83,16 +84,16 @@
                                     <tr>
                                         <td>{{ $products->product_name }}</td>
                                         <td>{{ $products->product_price }}</td>
+                                        <td>{{ $products->product_deskripsi }}</td>
                                         <td><a href="#" data-bs-toggle="modal" data-bs-target="#fullImageModal{{ $products->id }}">
                                             <img src="{{ asset('storage/files/' . $products->encrypted_filename) }}" alt="FotoResi" style="max-width: 100px;">
                                         </a></td>
                                         <td>
                                         <div class="d-flex">
-                                        <a href="" class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-box-seam-fill"></i></i></a>
-                                        <a href="" class="btn btn-outline-warning btn-sm me-2"><i class="bi-pencil-square"></i></a>
+                                        <!-- <a href="" class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-box-seam-fill"></i></i></a> -->
+                                        <a href="{{ route('Databarang.edit', ['Databarang' => $products->id]) }}" class="btn btn-outline-warning btn-sm me-2"><i class="bi-pencil-square"></i></a>
                                         <div>
                                         <form action="{{ route('dashboard.destroy', ['id' => $products->id]) }}" method="POST">
-
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-outline-danger btn-sm me-2"><i class="bi bi-trash3-fill"></i></button>

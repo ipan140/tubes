@@ -11,8 +11,9 @@
 
 <body><br><br>
     <div class="container-sm mt-5">
-        <form action="{{ route('Databarang.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('Databarang.update', ['Databarang' => $barang->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="row justify-content-center">
                 <div class="p-5 bg-light rounded-3 border col-xl-6">
                     <div class="mb-3 text-center">
@@ -39,9 +40,12 @@
                             <label for="cv" class="form-label">Gambar</label>
                             <input type="file" class="form-control" name="fotoproduk" id="cv">
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <div class="col">
+                            <label for="product_deskripsi" class="form-label">Deskripsi</label>
+                            <input class="form-control @error('product_deskripsi') is-invalid @enderror" type="text" name="product_deskripsi" id="product_deskripsi" value="{{ old('product_deskripsi') }}" placeholder="Produk">
+                            @error('product_deskripsi')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <hr>
