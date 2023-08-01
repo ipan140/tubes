@@ -39,9 +39,12 @@
                             <label for="cv" class="form-label">Gambar</label>
                             <input type="file" class="form-control" name="fotoproduk" id="cv">
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <div class="col">
+                            <label for="product_deskripsi" class="form-label">Deskripsi</label>
+                            <input class="form-control @error('product_deskripsi') is-invalid @enderror" type="text" name="product_deskripsi" id="product_deskripsi" value="{{ old('product_deskripsi') }}" placeholder="Produk">
+                            @error('product_deskripsi')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <hr>

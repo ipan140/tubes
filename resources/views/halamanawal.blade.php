@@ -104,7 +104,9 @@
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">{{ $prodak->product_name}}</h5>
                                 <!-- Product price-->
-                                {{ $prodak->product_price}}
+                                {{ $prodak->product_price}}<br><br>
+                                <h6 class="fw-bolder">
+                                {{ $prodak->product_deskripsi}}</h6>
                             </div>
                         </div>
                         <!-- Product actions-->
