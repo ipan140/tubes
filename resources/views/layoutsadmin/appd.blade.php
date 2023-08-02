@@ -19,15 +19,12 @@
 </head>
 
 <body>
-    @include('layouts.nav')
+    @include('layoutsadmin.nav')
     @yield('content')
     @yield('scripts')
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @stack('scripts')
     @include('sweetalert::alert')
     @stack('search')
-    @include('layouts.footer')
 </body>
-
 </html>
-

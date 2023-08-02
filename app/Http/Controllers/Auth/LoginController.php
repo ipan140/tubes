@@ -47,7 +47,7 @@ class LoginController extends Controller
             if (auth()->user()->role == 'admin') {
                 return redirect()->route('dashboardadmin'); // Ganti dengan rute yang sesuai untuk halaman admin
             } elseif (auth()->user()->role_id == '2') {
-                return redirect()->route('homekasir'); // Ganti dengan rute yang sesuai untuk halaman kasir
+                return redirect()->route('HalamanUser'); // Ganti dengan rute yang sesuai untuk halaman kasir
             }
         }
 

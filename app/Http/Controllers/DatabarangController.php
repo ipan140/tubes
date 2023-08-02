@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -114,9 +115,9 @@ class DatabarangController extends Controller
     public function update(Request $request, string $id)
     {
         {
-    
+
             $file = $request->file('fotoproduk');
-    
+
             if ($file != null) {
                 $barang = Product::find($id);
                 $encryptedFilename = 'public/files/' . $barang->encrypted_filename;
@@ -125,26 +126,26 @@ class DatabarangController extends Controller
             if ($file != null) {
                 $originalFilename = $file->getClientOriginalName();
                 $encryptedFilename = $file->hashName();
-    
+
                 // Store File
                 $file->Store('public/files');
             }
-    
+
             // UPDATE QUERY (ELOQUENT)
             $barang = Product::find($id);
             $barang->product_name = $request->product_name;
             $barang->product_price = $request->product_price;
             $barang->product_deskripsi = $request->product_deskripsi;
-    
+
             if ($file != null) {
                 $barang->original_filename = $originalFilename;
                 $barang->encrypted_filename = $encryptedFilename;
             }
-    
+
             $barang->save();
             return redirect()->route('Databarang.index');
         }
-    
+
     }
 
     /**
@@ -155,4 +156,14 @@ class DatabarangController extends Controller
         Product::find($id)->delete();
         return redirect()->route('home');
     }
+
+    public function exportPdf()
+    {
+        $product = Product::all();
+
+        $pdf = PDF::loadView('dashboard.export_pdf', compact('product'));
+
+        return $pdf->download('dataproduk.pdf');
+    }
+
 }

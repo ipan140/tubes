@@ -11,9 +11,9 @@
     <body id="page-top"  style="background: linear-gradient(116.82deg, #fe9636, #ffb800);" >
         <header class="masthead d-flex align-items-center">
             <div class="container px-4 px-lg-5 text-center">
-                <h1 class="mb-1">Zscnak</h1>
-                <h3 class="mb-5"><em>Zsnack Menyediakan Makanan Ringan</em></h3>
-                <a class="btn btn-primary btn-xl" type="button" href="{{ route('login') }}">Selengkapnya!</a>
+                <h1 class="mb-1"style="color: white">Zscnak</h1>
+                <h3 class="mb-5" style="color: white"<em>Zsnack Menyediakan Makanan Ringan</em></h3>
+                <a class="btn btn-light btn-xl" type="button" href="{{ route('login') }}">Selengkapnya!</a>
             </div>
         </header>
         <div>
