@@ -26,7 +26,7 @@ Auth::routes();
 // route untuk halaman awal
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
 
