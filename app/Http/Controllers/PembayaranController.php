@@ -18,7 +18,7 @@ class PembayaranController extends Controller
 
     public function getProducts()
     {
-
+        
         $produk = Product::all();
         return $produk;
     }

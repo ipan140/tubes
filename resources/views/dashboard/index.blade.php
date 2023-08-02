@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - SB Admin</title>
+    <title>Admin Zsnack</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -40,6 +40,7 @@
                     </li>
                 </ul>
             </li>
+
         </ul>
     </nav>
     <div id="layoutSidenav">
@@ -48,7 +49,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Dashboard</div>
-                        <a class="nav-link" href="dashboard.html">
+                        <a class="nav-link" href="#">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data Produk
                         </a>
@@ -67,6 +68,11 @@
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
                             <a href="{{ route('Databarang.create') }}" class="btn btn-primary">Tambah Product</a>
+                            <li class="list-inline-item">
+                                <a href="{{ route('dataproduk.exportPdf') }}" class="btn btn-outline-danger">
+                                    <i class="bi bi-download me-1"></i> to PDF
+                                </a>
+                            </li>
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">

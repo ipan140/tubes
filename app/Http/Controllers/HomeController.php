@@ -30,15 +30,15 @@ class HomeController extends Controller
         return view('dashboard.index',['produk'=> $produk]);
     }
 
-    function show ($id)
-    {
-        $produk = Product::findOrfail($id);
-        $pageTitle = 'HalamanProduk';
-        $identifier = Auth::user()->name;
-        $cartContent = Cart::instance($identifier)->content();
-        return view('HalamanProduk', ['pageTitle' => $pageTitle,'produk' => $produk, 'cartContent' => $cartContent,]);
+    // function show ($id)
+    // {
+    //     $produk = Product::findOrfail($id);
+    //     $pageTitle = 'HalamanProduk';
+    //     $identifier = Auth::user()->name;
+    //     $cartContent = Cart::instance($identifier)->content();
+    //     return view('HalamanProduk', ['pageTitle' => $pageTitle,'produk' => $produk, 'cartContent' => $cartContent,]);
 
-    }
+    // }
     function add(Request $request, $id)
     {
         $product = Product::findOrFail($id);
