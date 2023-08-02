@@ -10,7 +10,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-<section class="vh-100" style="background-color: #508bfc;">
+<section class="vh-100" style="background: linear-gradient(116.82deg, #fe9636, #ffb800);" >
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -18,7 +18,7 @@
           <div class="card-body p-5 text-center">
 
             <div class="mb-3 text-center">
-            <i class="bi-hexagon-fill text-primary me-2 fs-1"></i>
+            <i class="bi-hexagon-fill text-warning me-2 fs-1"></i>
                 <h4>Zsnack</h4>
               </div>
             <form method="POST" action="{{ route('login') }}">
@@ -50,7 +50,7 @@
               <label class="form-check-label" for="form1Example3"> Remember password </label>
             </div>
 
-            <button class="btn btn-primary btn-lg btn-block" type="submit"> {{ __('Login') }}</button><br><br>
+            <button class="btn btn-warning btn-lg btn-block" type="submit"> {{ __('Login') }}</button><br><br>
             <p><a href="register" class="link-underline-primary">Register akun ?</a></p>
           </div>
         </div>

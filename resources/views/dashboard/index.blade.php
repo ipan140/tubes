@@ -17,7 +17,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand ps-3" href="index.html">Zsnack</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -47,10 +47,10 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Halaman</div>
-                        <a class="nav-link" href="index.html">
+                        <div class="sb-sidenav-menu-heading">Dashboard</div>
+                        <a class="nav-link" href="dashboard.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Login
+                            Data Produk
                         </a>
                     </div>
                 </div>
@@ -61,12 +61,12 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Dashboard</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item active">Data Product</li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                            <a href="{{ route('Databarang.create') }}" class="btn btn-primary">Create Employee</a>
+                            <a href="{{ route('Databarang.create') }}" class="btn btn-primary">Tambah Product</a>
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">
@@ -102,7 +102,7 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                </tbody>              
+                                </tbody>
                             </table>
                         </div>
                     </div>
