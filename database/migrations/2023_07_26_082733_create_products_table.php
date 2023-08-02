@@ -11,12 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            // $table->string('original_filename')->after('product_name')->nullable();
-            $table->string('product_deskripsi')->after('original_filename')->nullable();
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('product_name');
+            $table->string('original_filename');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('produk_deskripsi');
+            $table->string('encrypted_filename');
+            $table->string('product_price');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
-    
+
     /**
     * Reverse the migrations.
     */
@@ -27,5 +34,5 @@ return new class extends Migration
             $table->dropColumn('original_filename');
         });
     }
-    
+
 };
