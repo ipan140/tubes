@@ -15,7 +15,7 @@ class HomeController extends Controller
     {
         $produk = Product::all();
         $id = Auth::user()->id;
-        
+
         $data = DB::table('users')
                 ->where('id','=', $id)
                 ->first();
@@ -37,7 +37,7 @@ class HomeController extends Controller
         $identifier = Auth::user()->name;
         $cartContent = Cart::instance($identifier)->content();
         return view('HalamanProduk', ['pageTitle' => $pageTitle,'produk' => $produk, 'cartContent' => $cartContent,]);
-        
+
     }
     function add(Request $request, $id)
     {
@@ -54,5 +54,5 @@ class HomeController extends Controller
 
         return redirect()->back()->with('success', 'Item added to cart successfully.');
     }
-    
+
 }

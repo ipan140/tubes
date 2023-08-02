@@ -8,7 +8,7 @@
         <title>Zsnack</title>
     </head>
     @vite('resources/css/style.css')
-    <body id="page-top">
+    <body id="page-top"  style="background: linear-gradient(116.82deg, #fe9636, #ffb800);" >
         <header class="masthead d-flex align-items-center">
             <div class="container px-4 px-lg-5 text-center">
                 <h1 class="mb-1">Zscnak</h1>
