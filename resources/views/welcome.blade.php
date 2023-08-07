@@ -12,7 +12,7 @@
         <header class="masthead d-flex align-items-center">
             <div class="container px-4 px-lg-5 text-center">
                 <h1 class="mb-1"style="color: white">Zscnak</h1>
-                <h3 class="mb-5" style="color: white"<em>Zsnack Menyediakan Makanan Ringan</em></h3>
+                <h3 class="mb-5" style="color: white"><em>Zsnack Menyediakan Makanan Ringan</em></h3>
                 <a class="btn btn-light btn-xl" type="button" href="{{ route('login') }}">Selengkapnya!</a>
             </div>
         </header>

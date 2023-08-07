@@ -18,7 +18,7 @@ class UserMiddleware
         if (auth()->check() && auth()->user()->role == 'User') {
             return $next($request);
         }
-        return redirect('/'); // Ganti dengan rute atau URL yang sesuai jika pengguna bukan kasir
-        
+        return redirect('/'); // Ganti dengan rute atau URL yang sesuai jika pengguna bukan Admin
+
     }
 }

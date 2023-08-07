@@ -99,7 +99,7 @@ class DatabarangController extends Controller
      */
     public function edit(string $id)
     {
-         $pageTitle = 'Edit Employee';
+         $pageTitle = 'Edit Produck';
 
         // ELOQUENT
         $product = Product::all();

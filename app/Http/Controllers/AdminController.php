@@ -9,7 +9,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $pageTitle = 'Resi List';
+        $pageTitle = 'Produk';
         // confirmDelete();
         $produk = Product::all();
 
@@ -31,15 +31,15 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $file = $request->file('cv');
-    
+
         if ($file != null) {
             $originalFilename = $file->getClientOriginalName();
             $encryptedFilename = $file->hashName();
-    
+
             // Store File
             $file->store('public/files');
         }
-    
+
         // ELOQUENT
         $barang = New Product;
         $barang->product_name = $request->product_name;
@@ -49,7 +49,7 @@ class AdminController extends Controller
             $barang->original_filename = $originalFilename;
             $barang->encrypted_filename = $encryptedFilename;
         }
-    
+
         $barang->save();
         $pageTitle = 'Create barang';
         return view('dashboard.index', compact('pageTitle'));
