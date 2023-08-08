@@ -37,7 +37,7 @@ Auth::routes();
 Route::middleware(['auth', 'User'])->group(function () {
     Route::get('profile', ProfileController::class)->name('profile');
     Route::get('/pembayaran', [App\Http\Controllers\PembayaranController::class, 'index'])->name('pembayaran');
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::post('/cart/add/{id}', [App\Http\Controllers\HomeController::class, 'add'])->name('cart.add');
 });
 
