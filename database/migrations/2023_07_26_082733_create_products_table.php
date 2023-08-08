@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->string('original_filename');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('produk_deskripsi');
+            $table->string('product_deskripsi');
             $table->string('encrypted_filename');
             $table->string('product_price');
             $table->timestamp('created_at')->nullable();
